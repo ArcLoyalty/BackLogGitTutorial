@@ -1,0 +1,50 @@
+5. 동시에 여러 작업하기
+
+	이번에는 두 개의 브랜치를 생성하여 동시에 여러 작업을 처리하는 상황을 만들어 보겠다.
+
+	'issue2' 와 'issue3' 브랜치를 만든 후, 'issue2' 브랜치로 전환한다.
+
+		$ git branch issue2
+		$ git branch issue3
+		$ git checkout issue2
+		Switched to branch 'issue2'
+		$ git branch
+		* issue2
+ 		  issue3
+		  master
+
+	커밋	커밋(마스터)
+		((이슈2,헤드), 이슈3)
+
+
+	'issue2' 브랜치의 myfile.txt 에 아래와 같이 commit 에 대한 설명을 추가하여 커밋해 보도록 하겠다.
+	
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+		commit: 인덱스 상태를 기록하기 
+
+		$ git add myfile.txt
+		$ git commit -m "commit의 설명 추가"
+		[issue2 8f7aa27] commit의 설명 추가
+ 		1 files changed, 2 insertions(+), 0 deletions(-)
+
+		커밋	커밋(마스터,이슈3)	커밋(이슈2,헤드)
+
+	이번에는 'issue3' 브랜치로 전환 합니다.
+
+		$ git checkout issue3
+		Switched to branch 'issue3'
+
+	myfile.txt 파일을 열어 내용을 확인한다. 
+	commit 명령의 설명은 'issue2' 브랜치에서 추가했기 때문에, 'issue3' 브랜치로 전환한 후의 myfile.txt 파일에는 add 명령의 설명 밖에 없다.
+
+	이번에는 pull 명령어의 설명을 추가하여 변경 사항을 커밋해 보도록 하겠다.
+
+		커밋	커밋(마스터)	커밋(이슈2
+					커밋(이슈3,HEAD)
+
+	지금까지 'issue2' 브랜치에 commit 에 대한 설명을, 'issue3' 브랜치에 pull 에 대한 설명을 포함하여 커밋해 보았다. 
+	이처럼 각각의 브랜치에서는 독립적으로 서로 다른 작업을 처리할 수 있다.
+
+	다음 단계에서는 이 두 브랜치를 병합하여, 내용이 달라진 myfile.txt 파일에 대한 충돌을 해결하는 방법에 대해 알아보도록 하겠다.
+

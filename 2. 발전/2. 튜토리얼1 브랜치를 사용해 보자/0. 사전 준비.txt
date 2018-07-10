@@ -1,0 +1,24 @@
+0. 사전 준비
+
+	실습을 위해 먼저 Git 저장소를 만들어야 합니다.
+
+	아래 코드를 이용하여 tutorial 이라는 이름으로 새 폴더를 만들고 Git 저장소로 지정해 봅시다.
+
+		$ mkdir tutorial
+		$ cd tutorial
+		$ git init
+		Initialized empty Git repository in /Users/eguchi/Desktop/tutorial/.git/
+
+	tutorial 폴더에 myfile.txt 이라는 이름으로 파일을 만든 후 커밋합니다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+
+		$ git add myfile.txt
+		$ git commit -m "first commit"
+		[master (root-commit) a73ae49] first commit
+ 		 1 files changed, 1 insertions(+), 0 deletions(-)
+ 		 create mode 100644 myfile.txt
+
+	여기까지 진행했다면, 아래 그림과 같은 이력이 남게 됩니다.
+
+		커밋(헤드, 마스터)

@@ -1,0 +1,76 @@
+이전에 작성한 커밋 수정하기
+	난이도 : ☆
+
+	--amend 옵션을 지정하여 커밋을 수행하면, 같은 브랜치 상에서 이전에 커밋했던 내용에 새로운 내용을 추가하거나 설명을 수정할 수 있다.
+
+		이럴 때 사용해 봐
+
+			누락된 파일을 새로 추가하거나 기존의 파일을 업데이트 해야할 때
+			이전 커밋의 설명을 변경하고 싶을 때
+
+https://backlog.com/git-tutorial/kr/stepup/stepup7_1.html
+
+1. commit --amend
+
+	이번 튜토리얼에서는 이전에 커밋한 내용을 수정해 보도록 하겠다.
+
+	위에서 다운로드 한 stepup-tutorial/tutorial1 폴더로 이동한다. 이 저장소의 이력은 다음 그림과 같다.
+
+		커밋(first commit)		커밋((add 설명 추가),master,HEAD)
+
+	log 명령어를 실행하여 이력을 확인한다.
+
+		$ git log
+		commit 326fc9f70d022afdd31b0072dbbae003783d77ed
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:17:56 2012 +0900
+	
+		    add의 설명을 추가
+
+		commit 48eec1ddf73a7fb508ef664efd6b3d873631742f
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:16:14 2012 +0900
+
+		    first commit
+
+	이제 sample.txt 파일을 열고 commit 의 설명을 추가합니다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+		commit: 인덱스의 상태를 기록하기	
+		
+	--amend 옵션을 이용하여 커밋합니다.
+
+		$ git add sample.txt
+		$ git commit --amend
+
+	열려진 편집기에서는 최근에 커밋한 내용이 포함되어 있을 것입니다. 
+	내용을「add와 commit의 설명을 추가」로 바꾸어 넣은 다음 저장하고 빠져 나옵니다.
+
+	이로써 커밋의 내용이 수정 되었습니다. log 명령어에서 이력과 커밋 메시지를 확인해 봅니다.
+		
+		커밋(퍼스트 커밋)	커밋(헤드,마스터,add와 커밋 설명을 추가)
+
+		$ git log
+		commit e9d75a02e62814541ee0410d9c1d1bf47ab1c057
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:17:56 2012 +0900
+
+			    add와 commit의 설명을 추가
+
+		commit 48eec1ddf73a7fb508ef664efd6b3d873631742f
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:16:14 2012 +0900
+
+			    first commit	
+
+
+
+
+
+
+
+
+
+
+

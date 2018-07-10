@@ -1,0 +1,13 @@
+Windows 환경
+
+	오픈소스 깃 클라이언트인 TortoiseGit과 언어팩까지 설치해본다.
+
+		TortiseGit
+
+			http://code.google.com/p/tortoisegit/
+
+			(프로그램과 언어팩을 설치해라)
+
+		Git Hub
+
+			http://msysgit.github.io/

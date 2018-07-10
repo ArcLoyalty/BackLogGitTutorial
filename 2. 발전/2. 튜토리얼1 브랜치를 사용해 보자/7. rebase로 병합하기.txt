@@ -1,0 +1,77 @@
+7. rebase 로 병합하기
+
+	앞선 튜토리얼에서 우리는 두 개의 브랜치를 'master' 브랜치로 모두 병합 시켰다. 
+	그로 인해 두 개의 줄기로 브랜치가 분기 되었다가 다시 하나로 합쳐지는 것을 확인 했었다.
+
+	'issue3' 브랜치를 병합 할 때에 rebase 를 먼저 실행한 후 병합을 시도한다면 그 이력을 하나의 줄기로 만들 수도 있다. 
+	이번에는 이와 같은 경우를 만들어 보도록 하겠다. 
+	이를 위해 일단 이전의 튜토리얼에서 마지막으로 진행했던 병합 명령을 취소한다.
+
+		$ git reset --hard HEAD~
+
+	현재 이력
+
+		커밋	커밋	커밋((마스터,헤드),이슈2)
+				커밋(이슈3)
+ 
+
+	이제 'issue3' 브랜치로 전환하여 'master' 브랜치에 rebase 를 실행합니다.
+
+		$ git checkout issue3
+		Switched to branch 'issue3'
+		$ git rebase master
+		First, rewinding head to replay your work on top of it...
+		Applying: pull 설명을 추가
+		Using index info to reconstruct a base tree...
+		<stdin>:13: new blank line at EOF.
+		+
+		warning: 1 line adds whitespace errors.
+		Falling back to patching base and 3-way merge...
+		Auto-merging myfile.txt
+		CONFLICT (content): Merge conflict in myfile.txt
+		Failed to merge in the changes.
+		Patch failed at 0001 pull 설명을 추가
+
+		When you have resolved this problem run "git rebase --continue".
+		If you would prefer to skip this patch, instead run "git rebase --skip".
+		To check out the original branch and stop rebasing run "git rebase --abort".
+
+	merge 때와 마찬가지로 myfile.txt 파일 내용에 충돌이 있기 때문에 그 부분을 이전의 튜토리얼에서와 동일하게 처리한다. 
+	충돌난 파일 내용을 적절히 변경해 준다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+		<<<<<<< HEAD
+		commit: 인덱스의 상태를 기록하기
+		=======
+		pull: 원격 저장소의 내용을 가져오기
+		>>>>>>> issue3
+	
+	rebase 의 경우 충돌 부분을 수정 한 후에는 commit 이 아니라 rebase 명령에 --continue 옵션을 지정하여 실행해야 한다.
+
+		$ git add myfile.txt
+		$ git rebase --continue
+		Applying: pull 설명을 추가
+
+	만약 rebase 자체를 취소하려면 --abort 옵션을 지정하면 된다.
+
+	현재 시점의 이력
+		
+		커밋	커밋	커밋(마스터,이슈2)	커밋(이슈3,헤드)
+
+	이전 튜토리얼에서 merge 명령어를 사용했을 때와 같이, rebase 만 실행한 경우에는 위처럼 'issue3' 브랜치가 두 브랜치의 앞 쪽으로 위치가 옮겨졌을 뿐 'master' 브랜치는 아직 'issue3'의 변경 사항이 적용되지 못한 상태로 뒤에 남겨져 있다. 
+	이제 'master' 브랜치로 전환 하여 'issue3' 브랜치의 변경 사항을 모두 병합할 차례이다.
+
+		$ git checkout master
+		Switched to branch 'master'
+		$ git merge issue3
+		Updating 8f7aa27..96a0ff0
+		Fast-forward
+		 myfile.txt |    1 +
+		 1 files changed, 1 insertions(+), 0 deletions(-)
+
+	myfile.txt 의 최종적인 내용은merge 했을 경우와 동일하지만, 그 이력은 아래 그림과 같이 달라진다.
+
+	현재 시점의 이력
+
+		커밋	커밋	커밋(이슈2)	커밋((마스터,헤드),이슈3)

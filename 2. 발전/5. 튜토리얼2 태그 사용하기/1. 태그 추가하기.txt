@@ -1,0 +1,26 @@
+1. 태그 추가하기
+
+	태그를 추가하려면 tag 명령어를 사용합니다. <tagname>에는 태그 이름을 지정한다.
+
+		$ git tag <tagname>
+
+	현재 'HEAD'가 가리키고 있는 커밋에 'apple' 이라는 태그를 달려면, 다음과 같은 명령어를 실행한다.
+
+		$ git tag apple
+
+	파라미터 없이 tag 명령어를 실행하면, 태그 목록을 볼 수 있다.
+
+		$ git tag
+		apple
+
+	또한 log 명령어에 --decorate 옵션을 붙여 실행하면, 태그 정보를 포함한 이력을 확인할 수 있다.
+
+		$ git log --decorate
+		commit e7978c94d2104e3e0e6e4a5b4a8467b1d2a2ba19 (HEAD, tag: apple, master)
+		Author: yourname <yourname@yourmail.com>
+		Date:   Wed Jul 18 16:43:27 2012 +0900
+
+		커밋((마스터,헤드),apple)
+
+
+		

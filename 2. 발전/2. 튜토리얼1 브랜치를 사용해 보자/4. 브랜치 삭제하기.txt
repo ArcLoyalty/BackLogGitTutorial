@@ -1,0 +1,21 @@
+4. 브랜치 삭제하기
+
+	'issue1' 브랜치의 내용이 모두 'master'에 통합 되었기 때문에 이제 더 이상 'issue1' 브랜치가 필요없게 되었다.
+
+	브랜치를 삭제하려면 branch 명령에 -d 옵션을 지정하여 실행하면 된다.
+
+		$ git branch -d <branchname>
+
+	'issue1' 브랜치를 삭제하려면, 다음 명령어를 실행합니다.
+
+		$ git branch -d issue1
+		Deleted branch issue1 (was b2b23c4).
+
+	이제 'issue1' 브랜치는 삭제되었다. 
+	정말로 브랜치가 잘 삭제 되었는지 branch 명령어를 이용해서 확인한다. 
+	아래와 같이 'master' 브랜치만 목록에 남아 있게 된다.
+
+		$ git branch
+		* master
+
+		커밋	커밋(마스터,헤드)

@@ -1,0 +1,52 @@
+3. 브랜치 병합하기
+
+	이번에는 'issue1' 브랜치의 변경 사항을 'master' 브랜치에 병합해 볼까?
+
+		커밋(마스터)	커밋(이슈,헤드)
+
+	브랜치 병합은 merge 명령어로 실행한다. 
+	이 명령어에 병합할 커밋 이름을 넣어 실행하면, 지정한 커밋 내용이 'HEAD'가 가리키고 있는 브랜치에 넣어진다. 
+	'HEAD'는 현재 사용중인 브랜치에 위치하게 된다. 
+	위 그림에서는 'issue1' 커밋에 'HEAD'가 위치하고 있다.
+
+		$ git merge <commit>
+
+	'master' 브랜치에 'issue1'를 넣기 위해서는 우선 'master' 브랜치에 'HEAD'가 위치하게 만들어야 한다. 
+	이 때에는 checkout 명령어를 이용하여 현재 사용중인 브랜치를 'master'로 전환한다.
+
+		$ git checkout master
+		Switched to branch 'master'
+
+	병합하기 전에 myfile.txt 파일을 열어 내용을 확인한다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+
+	이번 실습에서의 파일 편집은 'issue1' 브랜치에서 실행 했기 때문에 'master' 브랜치로 브랜치를 전환한 지금, myfile.txt 파일을 확인했을 때 그 내용이 변경되어 있지 않아야 한다.
+
+	그럼 이제 병합을 시작해볼까?
+
+		$ git merge issue1	
+		Updating 1257027..b2b23c4
+		Fast-forward
+		 myfile.txt |    1 +
+		 1 files changed, 1 insertions(+), 0 deletions(-)
+
+	이제 'master' 브랜치가 가리키는 커밋이 'issue1'과 같은 위치로 이동했다. 
+	이런 방식의 병합을 'fast-forward (빨리감기) 병합'이라고 한다.	
+
+		커밋	커밋(master)	
+			커밋(issue1,HEAD)
+
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+
+	「add: 변경 사항을 만들어서 인덱스에 등록해보기」 내용이 추가되어 있는 것을 확인한다.
+
+
+
+
+
+
+
+
+

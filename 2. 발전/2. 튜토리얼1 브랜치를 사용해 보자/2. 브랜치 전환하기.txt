@@ -1,0 +1,42 @@
+2. 브랜치 전환하기
+
+	앞에서 우리가 새로 만든 'issue1'라는 이름의 브랜치를 사용하여 어떤 작업을 수행하려면, 
+	이 브랜치를 사용 하겠다고 명시적으로 지정해 주어야 한다. 
+	이 때 사용하는 명령어가 바로 checkout 입니다. 
+	체크아웃(checkout)이란, 내가 사용할 브랜치를 지정하는 것을 의미한다.
+
+	다음과 같이 checkout 명령어 뒤에 사용할 브랜치 이름을 입력하면 된다.
+
+		$ git checkout <branch>
+
+	아래와 같이 입력하여 'issue1' 브랜치를 체크아웃 해 봅시다.
+
+		$ git checkout issue1
+		Switched to branch 'issue1'
+
+	이 시점까지의 이력을 보면 아래와 같습니다.
+
+		커밋(마스터)
+		이슈(헤드)
+
+
+	checkout 명령에 -b 옵션을 넣으면 브랜치 작성과 체크아웃을 한꺼번에 실행할 수 있다.
+
+		$ git checkout -b <branch>
+
+	'issue1' 브랜치를 체크아웃한 상태에서 커밋을 수행하면, 'issue1' 브랜치에 그 이력이 기록된다. 
+	mylife.txt 에 아래 박스에서와 같이 문장을 추가한 후에 커밋해본다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+
+		$ git add myfile.txt
+		$ git commit -m "add 설명을 추가"
+		[issue1 b2b23c4] add 설명을 추가
+		 1 files changed, 1 insertions(+), 0 deletions(-)
+
+	위와 같이 commit 명령어에 -m 옵션을 넣으면 커밋 설명을 포함시킬 수 있다.
+
+	이 시점까지의 이력을 보면 다음과 같다.
+
+		커밋(master)	커밋(issue1, HEAD)

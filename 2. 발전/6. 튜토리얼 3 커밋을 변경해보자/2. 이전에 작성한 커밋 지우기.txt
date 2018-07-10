@@ -1,0 +1,87 @@
+revert
+
+	이번에는 revert 를 사용하여 「pull의 설명을 추가」를 지워보도록 하겠습니다.
+
+	위에서 다운로드 한 'stepup-tutorial/tutorial2' 폴더로 이동합니다. 
+	이 저장소의 이력은 다음 그림과 같습니다.
+
+		커밋(first commit)	커밋(add의 설명을 추가)	커밋(commit의 설명을 추가)	커밋(마스터,헤드,pull 의 설명을 추가)
+
+	log 명령어를 실행하여 이력을 확인합니다.
+
+		$ git log
+		commit 0d4a808c26908cd5fe4b6294a00150342d1a58be
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:19:26 2012 +0900
+
+	pull의 설명을 추가
+
+		commit 9a54fd4dd22dbe22dd966581bc78e83f16cee1d7
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:19:01 2012 +0900
+
+  	commit의 설명 추가
+
+		commit 326fc9f70d022afdd31b0072dbbae003783d77ed
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:17:56 2012 +0900
+
+	add의 설명을 추가
+
+		commit 48eec1ddf73a7fb508ef664efd6b3d873631742f
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:16:14 2012 +0900
+
+		    first commit
+
+	sample.txt 파일을 열어 내용을 확인합니다.
+
+		원숭이도 이해할 수 있는 Git 명령어
+		add: 변경 사항을 만들어서 인덱스에 등록해보기
+		commit: 인덱스의 상태를 기록하기
+		pull: 원격 저장소의 내용을 가져오기
+
+	revert 를 사용하여 'pull의 설명을 추가'하는 커밋을 취소합니다.
+
+		$ git revert HEAD
+		[master d47bb1d] Revert "pull의 설명을 추가"
+		1 files changed, 1 insertions(+), 2 deletions(-)
+
+	sample.txt 를 열어 pull 의 설명이 지워졌는지 확인합니다.
+
+		커밋(first commit)	커밋(add의 설명을 추가)	커밋(commit의 설명을 추가)	커밋(pull의 설명을 추가)	커밋(pull의 설명 추가를 지우는 커밋)
+
+	log 명령어를 실행하여 이력을 확인합니다.
+
+		$ git log
+		commit 7bcf5e3b6fc47e875ec226ce2b13a53df73cf626
+		Author: yourname <yourname@yourmail.com>
+		Date:   Wed Jul 18 15:46:28 2012 +0900
+
+	Revert "pull의 설명을 추가"
+
+	This reverts commit 0d4a808c26908cd5fe4b6294a00150342d1a58be.
+
+		commit 0d4a808c26908cd5fe4b6294a00150342d1a58be
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:19:26 2012 +0900
+
+	pull의 설명을 추가
+
+		commit 9a54fd4dd22dbe22dd966581bc78e83f16cee1d7
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:19:01 2012 +0900
+
+	commit의 설명 추가
+
+		commit 326fc9f70d022afdd31b0072dbbae003783d77ed
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:17:56 2012 +0900
+
+	add의 설명을 추가
+
+		commit 48eec1ddf73a7fb508ef664efd6b3d873631742f
+		Author: yourname <yourname@yourmail.com>
+		Date:   Mon Jul 16 23:16:14 2012 +0900
+
+		    first commit
